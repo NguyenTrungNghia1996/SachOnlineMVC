@@ -3,6 +3,6 @@
  
 ## Ver1 Not the final version, but the final one I have...
 ## Using SqlServer 2012,
-## Using DADA.SQL
+## Using DATA.SQL
 ## Admin ACC : admin and no password
 ## User ACC : Admin and admin 
