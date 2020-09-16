@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Views/Layout/UserLayout.cshtml";
+}
+
+<div class="col-md-9">
+    <!-- PAGE HEADER -->
+    <div class="page_header1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Đăng nhập</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <!-- LOGIN INFO -->
+    <div class="loginfo">
+        @using (Ajax.BeginForm("DangNhap", "User",new AjaxOptions() {
+            HttpMethod="POST",
+            LoadingElementId= "loading",
+            UpdateTargetId= "kq",
+            OnBegin = "Success"
+        }))
+        {
+            <span class="notify-login">@ViewBag.ThongBao</span>
+            @*<form method="post">*@
+            <div class="input-field-ico">
+                <i class="fa fa-user-o"></i>
+                <input type="text" name="username" id="username" placeholder="Tên tài khoản" required="required" />
+            </div>
+            <div class="input-field-ico">
+                <i class="fa fa-lock"></i>
+                <input type="password" name="password" id="password" placeholder="Mật khẩu" required="required" />
+            </div>
+            <button type="submit">Đăng nhập</button>
+            <span>Bạn chưa có tài khoản?<a href="@Url.Content("~/User/Dangky")">Tạo tài khoản</a></span>
+            @*</form>*@
+        }
+        
+        <div id="myModal" class="modal " style="margin:0 auto; padding-top:200px;">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body" id="kq">
+                        <div id="loading" style="display:none">
+                            <img src="~/Content/User/images/giphy.gif" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+  
+    function Success() {
+        $('#myModal').show();
+        window.setTimeout(hide_modal, 4000);
+    }
+    function show_modal() {
+        $('#myModal').show();
+    }
+
+    function hide_modal() {
+        $('#myModal').hide();
+    }
+</script>
+
